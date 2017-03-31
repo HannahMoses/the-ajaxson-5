@@ -38,12 +38,12 @@ function fetchAndDisplayGif(event) {
     // configure a few parameters to attach to our request
     var params = {
         api_key: "dc6zaTOxFJmzC",
-        tag : "" // TODO should be e.g. "jackson 5 dance"
+        tag : usrreq // TODO should be e.g. "jackson 5 dance"
     };
 
     // make an ajax request for a random GIF
     $.ajax({
-        url: "", // TODO where should this request be sent?
+        url: "https://api.giphy.com/v1/gifs/random", // TODO where should this request be sent?
         data: params, // attach those extra parameters onto the request
         success: function(response) {
             // if the response comes back successfully, the code in here will execute.
@@ -54,6 +54,8 @@ function fetchAndDisplayGif(event) {
 
             // TODO
             // 1. set the source attribute of our image to the image_url of the GIF
+            $("#gif").attr("hidden",false);
+            $("#gif").attr("src","http://media1.giphy.com/media/NVPlsDbe4gxC8/giphy.gif")
             // 2. hide the feedback message and display the image
         },
         error: function() {
@@ -82,16 +84,21 @@ function setGifLoadedStatus(isCurrentlyLoaded) {
 }
 
 
-
-
-//
 //
 // $(document).ready(function() {
 //     // register our function as the "callback" to be triggered by the form's submission event
+//     //an anonymous function that we pass to jQuery's document.ready() function. This ensures
+//     // that we do not execute that line until the HTML document has finished loading and is "ready"
+//     // (because if we don't wait, then this code might execute before the <form> has loaded, in
+//     // which case our $("#form-gif-request") query will fail to find anything).
 //     $("#form-gif-request").submit(fetchAndDisplayGif); // in other words, when the form is submitted, fetchAndDisplayGif() will be executed
+//  // uses jQuery to search the DOM for our form (by querying for an
+//  // element whose id is "form-gif-request"), and then attaches, to
+//  // that form's submit event, a "callback" function named fetchAndDisplayGif,
+//  // which we have defined elsewhere in the file. The result is that
+//  // whenever the form is submitted, our fetchAndDisplayGif function
+//  // will be invoked.
 // });
-//
-//
 // /**
 //  * sends an asynchronous request to Giphy.com aksing for a random GIF using the
 //  * user's search term (along with "jackson 5")
@@ -100,12 +107,17 @@ function setGifLoadedStatus(isCurrentlyLoaded) {
 //  */
 // function fetchAndDisplayGif(event) {
 //
-//     // This prevents the form submission from doing what it normally does: send a request (which would cause our page to refresh).
-//     // Because we will be making our own AJAX request, we dont need to send a normal request and we definitely don't want the page to refresh.
+//     // This prevents the form submission from doing what it normally does: send a request (which
+//     // would cause our page to refresh).
+//     // Because we will be making our own AJAX request, we dont need to send a normal request and
+//     // we definitely don't want the page to refresh.
 //     event.preventDefault();
 //
 //     // get the user's input text from the DOM
-//     var searchQuery = ""; // TODO should be e.g. "dance"
+//     var searchQuery = "tag1"; // TODO should be e.g. "dance"
+//     var usrreq = document.getElementsByName("tag1")[0].value;
+//     $("#userreq").append(usrreq);
+//
 //     // configure a few parameters to attach to our request
 //     var params = {
 //         api_key: "dc6zaTOxFJmzC",

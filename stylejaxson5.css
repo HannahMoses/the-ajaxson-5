@@ -2,7 +2,7 @@ body{
 background-color:rgb(127,70,14);
 text-align:left;
 }
-h1{color:rgb(245,210,180);
+h1{color:yellow;
     text-align:center;
     font-size: 32px;
 
@@ -42,12 +42,13 @@ div {
     background-color: lightgrey;
 	margin :20px;
 	margin-left : 80px;
-	width: 210px;
-    height: 230px;
+	width: 400px;
+    height: 220px;
     padding: 10px;
     border: 25px solid navy;
 
 }
+
 
 
 
@@ -88,7 +89,7 @@ div {
     border: 25px solid navy;
 
 }*/
-=======
+/*=======
 body{
 background-color:rgb(127,70,14);
 text-align:left
@@ -125,4 +126,4 @@ div {
     border: 25px solid navy;
 
 }
->>>>>>> 88f5a34a86756b42eff14396ad09e51e94588ef2
+>>>>>>> 88f5a34a86756b42eff14396ad09e51e94588ef2*/
