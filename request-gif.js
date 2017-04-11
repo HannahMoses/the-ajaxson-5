@@ -1,5 +1,5 @@
 
-// Brequest-gif.js edited On TuesApr 11 2017
+// request-gif.js edited On TuesApr 11 2017
 
 
 $(document).ready(function() {
