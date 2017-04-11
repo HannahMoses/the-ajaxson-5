@@ -1,5 +1,5 @@
 
-// 2request-gif.js
+// Brequest-gif.js edited On TuesApr 11 2017
 
 
 $(document).ready(function() {
@@ -59,7 +59,7 @@ function fetchAndDisplayGif() {
             // TODO
             // 1. set the source attribute of our image to the image_url of the GIF
             $("#gif").attr("hidden",false);
-            $("#gif").attr("src","http://media1.giphy.com/media/NVPlsDbe4gxC8/giphy.gif")
+            $("#gif").attr("src",response.data.image_url)
             // 2. hide the feedback message and display the image
         },
         error: function() {
