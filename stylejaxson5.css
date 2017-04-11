@@ -42,7 +42,11 @@ p2{
     font-family: courier;
     font-size: 120%;
     text-align: left;
-    margin-left : 30px;
+    margin :20px;
+    margin-left : 180px;
+    width: 400px;
+    height: 220px;
+    border: 25px solid navy;
 }
 div {
     background-color: lightgrey;
@@ -54,82 +58,3 @@ div {
     border: 25px solid navy;
 
 }
-
-
-
-
-
-/*body{
-background-color:rgb(127,70,14);
-text-align:left
-}
-h1{color:rgb(245,210,180);
-    text-align:center;
-    font-size: 32px;
-
-}
-
-label{color:rgb(245,210,180);
-     margin-left: 30px;
-     font-size: 20px;
-}
-input{
-    background-color: pink;
-    margin-left: 30px;
-}
-p1{
-    color :purple;
-    font-family: courier;
-    font-size: 120%;
-    text-align: center;
-    margin-left : 120px;
-
-}
-div {
-    background-color: lightgrey;
-	margin :20px;
-	margin-left : 80px;
-	width: 278px;
-    height: 238px;
-    padding: 10px;
-    border: 25px solid navy;
-
-}*/
-/*=======
-body{
-background-color:rgb(127,70,14);
-text-align:left
-}
-h1{color:rgb(245,210,180);
-    text-align:center;
-    font-size: 32px;
-
-}
-
-label{color:rgb(245,210,180);
-     margin-left: 30px;
-     font-size: 20px;
-}
-input{
-    background-color: pink;
-    margin-left: 30px;
-}
-p1{
-    color :purple;
-    font-family: courier;
-    font-size: 120%;
-    text-align: center;
-    margin-left : 120px;
-
-}
-div {
-    background-color: lightgrey;
-	margin :20px;
-	margin-left : 80px;
-	width: 278px;
-    height: 238px;
-    padding: 10px;
-    border: 25px solid navy;
-
-}
->>>>>>> 88f5a34a86756b42eff14396ad09e51e94588ef2*/
