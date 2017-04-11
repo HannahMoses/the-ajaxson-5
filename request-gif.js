@@ -8,7 +8,10 @@ $(document).ready(function() {
     // that we do not execute that line until the HTML document has finished loading and is "ready"
     // (because if we don't wait, then this code might execute before the <form> has loaded, in
     // which case our $("#form-gif-request") query will fail to find anything).
-    $("#form-gif-request").submit(fetchAndDisplayGif); // in other words, when the form is submitted, fetchAndDisplayGif() will be executed
+    $("#form-gif-request").submit(function(event){
+        event.preventDefault();
+        fetchAndDisplayGif();
+    }); // in other words, when the form is submitted, fetchAndDisplayGif() will be executed
  // uses jQuery to search the DOM for our form (by querying for an
  // element whose id is "form-gif-request"), and then attaches, to
  // that form's submit event, a "callback" function named fetchAndDisplayGif,
@@ -22,13 +25,14 @@ $(document).ready(function() {
  *
  * upon receiving a response from Giphy, updates the DOM to display the new GIF
  */
-function fetchAndDisplayGif(event) {
+function fetchAndDisplayGif() {
 
     // This prevents the form submission from doing what it normally does: send a request (which
     // would cause our page to refresh).
     // Because we will be making our own AJAX request, we dont need to send a normal request and
     // we definitely don't want the page to refresh.
-    event.preventDefault();
+
+    // event.preventDefault();
 
     // get the user's input text from the DOM
     var searchQuery = "tag1"; // TODO should be e.g. "dance"
@@ -69,9 +73,11 @@ function fetchAndDisplayGif(event) {
 
     // TODO
     // give the user a "Loading..." message while they wait
-
+        // wait:function(){
+        //     $("#feedback").text("Loading...please wait.");
+        //     setGifLoadedStatus(false);
+        // }
 }
-
 
 /**
  * toggles the visibility of UI elements based on whether a GIF is currently loaded.

@@ -7,10 +7,17 @@ h1{color:yellow;
     font-size: 32px;
 
 }
+.riddle{color:rgb(245,210,180);
+     margin-left: 30px;
+     font-size: 20px;
+     display:inline;
+     font-family: courier;
+}
 
 label{color:rgb(245,210,180);
      margin-left: 30px;
      font-size: 20px;
+      font-family: courier;
 }
 input{
     background-color: pink;
@@ -18,7 +25,6 @@ input{
 }
 p1{
     color :purple;
-    font-family: courier;
     font-size: 120%;
     text-align: center;
     margin-left : 120px;
