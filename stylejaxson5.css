@@ -23,6 +23,17 @@ input{
     background-color: pink;
     margin-left: 30px;
 }
+img{
+    color :black;
+    font-family: courier;
+    font-size: 120%;
+    text-align: left;
+    margin :20px;
+    margin-left : 180px;
+    width: 400px;
+    height: 220px;
+    border: 25px solid navy;
+}
 p1{
     color :purple;
     font-size: 120%;
@@ -39,14 +50,7 @@ p{
 }
 p2{
     color :black;
-    font-family: courier;
-    font-size: 120%;
-    text-align: left;
-    margin :20px;
-    margin-left : 180px;
-    width: 400px;
-    height: 220px;
-    border: 25px solid navy;
+    
 }
 div {
     background-color: lightgrey;
