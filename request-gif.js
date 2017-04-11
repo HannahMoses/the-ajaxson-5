@@ -1,171 +1,53 @@
-
 // request-gif.js edited On TuesApr 11 2017
-
-
 $(document).ready(function() {
-    // register our function as the "callback" to be triggered by the form's submission event
-    //an anonymous function that we pass to jQuery's document.ready() function. This ensures
-    // that we do not execute that line until the HTML document has finished loading and is "ready"
-    // (because if we don't wait, then this code might execute before the <form> has loaded, in
-    // which case our $("#form-gif-request") query will fail to find anything).
     $("#form-gif-request").submit(function(event){
         event.preventDefault();
         fetchAndDisplayGif();
-    }); // in other words, when the form is submitted, fetchAndDisplayGif() will be executed
- // uses jQuery to search the DOM for our form (by querying for an
- // element whose id is "form-gif-request"), and then attaches, to
- // that form's submit event, a "callback" function named fetchAndDisplayGif,
- // which we have defined elsewhere in the file. The result is that
- // whenever the form is submitted, our fetchAndDisplayGif function
- // will be invoked.
+    });
 });
-/**
- * sends an asynchronous request to Giphy.com aksing for a random GIF using the
- * user's search term (along with "jackson 5")
- *
- * upon receiving a response from Giphy, updates the DOM to display the new GIF
- */
 function fetchAndDisplayGif() {
-
-    // This prevents the form submission from doing what it normally does: send a request (which
-    // would cause our page to refresh).
-    // Because we will be making our own AJAX request, we dont need to send a normal request and
-    // we definitely don't want the page to refresh.
-
-    // event.preventDefault();
-
-    // get the user's input text from the DOM
     var searchQuery = "tag1"; // TODO should be e.g. "dance"
     var usrreq = document.getElementsByName("tag1")[0].value;
+    var robot = document.getElementsByName("tag")[0].value;
+    if (robot == 5){
     $("#userreq").append(usrreq);
-
-    // configure a few parameters to attach to our request
     var params = {
         api_key: "dc6zaTOxFJmzC",
         tag : usrreq // TODO should be e.g. "jackson 5 dance"
     };
 
-    // make an ajax request for a random GIF
+
     $.ajax({
         url: "https://api.giphy.com/v1/gifs/random", // TODO where should this request be sent?
         data: params, // attach those extra parameters onto the request
         success: function(response) {
-            // if the response comes back successfully, the code in here will execute.
-
-            // jQuery passes us the `response` variable, a regular javascript object created from the JSON the server gave us
             console.log("we received a response!");
             console.log(response);
-
-            // TODO
-            // 1. set the source attribute of our image to the image_url of the GIF
+            // TODO 1. set the source attribute of our image to the image_url of the GIF
             $("#gif").attr("hidden",false);
             $("#gif").attr("src",response.data.image_url)
-            // 2. hide the feedback message and display the image
+
         },
         error: function() {
-            // if something went wrong, the code in here will execute instead of the success function
-
-            // give the user an error message
             $("#feedback").text("Sorry, could not load GIF. Try again!");
             setGifLoadedStatus(false);
-        }
+        },
+         wait:function(){
+             $("#feedback").text("Loading...please wait.");
+             setGifLoadedStatus(false);
+         }
     });
-
-    // TODO
-    // give the user a "Loading..." message while they wait
-        // wait:function(){
-        //     $("#feedback").text("Loading...please wait.");
-        //     setGifLoadedStatus(false);
-        // }
 }
+    else{
+        $("#prove").text("No gifs for you!");
+        setGifLoadedStatus(false);
+    }
 
-/**
- * toggles the visibility of UI elements based on whether a GIF is currently loaded.
- * if the GIF is loaded: displays the image and hides the feedback label
- * otherwise: hides the image and displays the feedback label
- */
+    // TODO     give the user a "Loading..." message while they wait
+
+}
 function setGifLoadedStatus(isCurrentlyLoaded) {
     $("#gif").attr("hidden", !isCurrentlyLoaded);
     $("#feedback").attr("hidden", isCurrentlyLoaded);
+    $("#prove").attr("hidden", isCurrentlyLoaded);
 }
-
-
-//
-// $(document).ready(function() {
-//     // register our function as the "callback" to be triggered by the form's submission event
-//     //an anonymous function that we pass to jQuery's document.ready() function. This ensures
-//     // that we do not execute that line until the HTML document has finished loading and is "ready"
-//     // (because if we don't wait, then this code might execute before the <form> has loaded, in
-//     // which case our $("#form-gif-request") query will fail to find anything).
-//     $("#form-gif-request").submit(fetchAndDisplayGif); // in other words, when the form is submitted, fetchAndDisplayGif() will be executed
-//  // uses jQuery to search the DOM for our form (by querying for an
-//  // element whose id is "form-gif-request"), and then attaches, to
-//  // that form's submit event, a "callback" function named fetchAndDisplayGif,
-//  // which we have defined elsewhere in the file. The result is that
-//  // whenever the form is submitted, our fetchAndDisplayGif function
-//  // will be invoked.
-// });
-// /**
-//  * sends an asynchronous request to Giphy.com aksing for a random GIF using the
-//  * user's search term (along with "jackson 5")
-//  *
-//  * upon receiving a response from Giphy, updates the DOM to display the new GIF
-//  */
-// function fetchAndDisplayGif(event) {
-//
-//     // This prevents the form submission from doing what it normally does: send a request (which
-//     // would cause our page to refresh).
-//     // Because we will be making our own AJAX request, we dont need to send a normal request and
-//     // we definitely don't want the page to refresh.
-//     event.preventDefault();
-//
-//     // get the user's input text from the DOM
-//     var searchQuery = "tag1"; // TODO should be e.g. "dance"
-//     var usrreq = document.getElementsByName("tag1")[0].value;
-//     $("#userreq").append(usrreq);
-//
-//     // configure a few parameters to attach to our request
-//     var params = {
-//         api_key: "dc6zaTOxFJmzC",
-//         tag : "" // TODO should be e.g. "jackson 5 dance"
-//     };
-//
-//     // make an ajax request for a random GIF
-//     $.ajax({
-//         url: "", // TODO where should this request be sent?
-//         data: params, // attach those extra parameters onto the request
-//         success: function(response) {
-//             // if the response comes back successfully, the code in here will execute.
-//
-//             // jQuery passes us the `response` variable, a regular javascript object created from the JSON the server gave us
-//             console.log("we received a response!");
-//             console.log(response);
-//
-//             // TODO
-//             // 1. set the source attribute of our image to the image_url of the GIF
-//             // 2. hide the feedback message and display the image
-//         },
-//         error: function() {
-//             // if something went wrong, the code in here will execute instead of the success function
-//
-//             // give the user an error message
-//             $("#feedback").text("Sorry, could not load GIF. Try again!");
-//             setGifLoadedStatus(false);
-//         }
-//     });
-//
-//     // TODO
-//     // give the user a "Loading..." message while they wait
-//
-// }
-//
-//
-// /**
-//  * toggles the visibility of UI elements based on whether a GIF is currently loaded.
-//  * if the GIF is loaded: displays the image and hides the feedback label
-//  * otherwise: hides the image and displays the feedback label
-//  */
-// function setGifLoadedStatus(isCurrentlyLoaded) {
-//     $("#gif").attr("hidden", !isCurrentlyLoaded);
-//     $("#feedback").attr("hidden", isCurrentlyLoaded);
-// }
